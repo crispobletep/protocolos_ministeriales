@@ -1,0 +1,105 @@
+/* CSS para el fondo azul y el navbar celeste */
+body {
+  background-color: #061e44;
+}
+
+.navbar {
+  background-color: #5f9fd3; /* Color celeste */
+}
+
+/* Resto de tus estilos CSS */
+.main {
+  padding-left: 120px;
+}
+
+.sidebar {
+    background-color: #f6feff;
+  position: fixed;
+  top: 15px;
+  bottom: 0;
+  left: 15px;
+  padding: 58px 0 0; /* Altura de la barra de navegación */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  width: 240px;
+  z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16%), 0 2px 10px 0 rgba(0, 0, 0, 0.12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Contenido con desplazamiento si la ventana gráfica es más corta que el contenido. */
+}
+
+.container-body {
+    background-color: #fff; /* Color blanco para el contenedor */
+    padding: 20px; /* Espacio de relleno dentro del contenedor */
+    border-radius: 15px; /* Borde redondeado para el contenedor */
+    margin-top: 100px; /* Espacio superior para separar el contenedor del encabezado */
+    margin-left: 300px; /* Ancho del menú lateral */
+    margin-right: 150px; /* Ancho del menú lateral */
+    margin-bottom: 20px; /* Espacio inferior para centrar verticalmente */
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 15px;
+}
+
+.central-balloon {
+    background-color: #FF5733; /* Color del globo central */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+    display: inline-block;
+}
+
+.protocol-balloons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.protocol-balloon {
+    background-color: #E9E9E9; /* Color del globo de protocolo */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.balloon-content {
+    padding: 10px;
+}
+
+.complete-button {
+    background-color: #4CAF50; /* Color del botón de completar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}

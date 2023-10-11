@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Protocolos Seleccionados</h2>
+  {% for message in messages %}
+    <div class="alert alert-dismissible alert-{{ message.tags }}">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong class="text-dark">{{ message }}</strong>
+    </div>
+  {% endfor %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre del Protocolo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for protocolo_seleccionado in protocolos_seleccionados_list %}
+        <tr>
+          <td>{{ protocolo_seleccionado.protocolo.nombre }}</td>
+          <td>
+            {% if protocolo_seleccionado.estado == 'completado' %}
+              <span style="color: green;">Completado</span>
+            {% elif protocolo_seleccionado.estado == 'incompleto' %}
+              <span style="color: red;">Incompleto</span>
+            {% else %}
+              <span style="color: yellow;">Pendiente</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if protocolo_seleccionado.estado == 'incompleto' or protocolo_seleccionado.estado == 'pendiente' %}
+              <a href="{% url 'autoevaluacion' protocolo_seleccionado.id %}" class="btn btn-primary">Comenzar Autoevaluación</a>
+            {% elif protocolo_seleccionado.estado == 'completado' %}
+              <form method="post" action="{% url 'eliminar_protocolo' protocolo_seleccionado.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

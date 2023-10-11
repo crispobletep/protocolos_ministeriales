@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     <style>
+    /* Estilos para dar formato al formulario */
+    .formulario-autoevaluacion {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .formulario-autoevaluacion th,
+    .formulario-autoevaluacion td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .formulario-autoevaluacion th {
+        background-color: #f2f2f2;
+    }
+
+    /* Estilos para ajustar los elementos del formulario */
+    .formulario-autoevaluacion select,
+    .formulario-autoevaluacion input[type="number"],
+    .formulario-autoevaluacion input[type="file"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .cumple-columna {
+        width: 5%; /* Ajusta el valor según tus necesidades */
+    }
+
+    .porcentaje-columna {
+        width: 5%; /* Ajusta el valor según tus necesidades */
+    }
+
+    .evidencia-columna {
+        width: 25%; /* Ajusta el valor según tus necesidades */
+    }
+
+    /* Reduce el ancho de otras columnas si es necesario */
+    .titulo-columna {
+        width: 20%; /* Puedes ajustar el valor según tus necesidades */
+    }
+
+    .item-columna {
+        width: 5%; /* Puedes ajustar el valor según tus necesidades */
+    }
+    .descripcion-columna {
+        width: 40%; /* Ajusta el valor según tus necesidades */
+    }
+    .btn-ver-plan {
+        width: 150px; /* Ajusta el valor según tus necesidades */
+    }
+
+    /* Estilos para la ventana emergente */
+    .ventana-emergente {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .ventana-contenido {
+        display: flex;
+        justify-content: space-between; /* Distribuir columnas en la ventana */
+    }
+
+    /* Estilo para la columna izquierda del formulario de plan de acción */
+    .columna-izquierda {
+        flex: 1; /* Toma el 50% del espacio en la ventana */
+        padding-right: 20px; /* Espacio entre columnas */
+    }
+
+    /* Estilo para la columna derecha del listado de planes de acción */
+    .columna-derecha {
+        flex: 1; /* Toma el 50% del espacio en la ventana */
+        padding-left: 20px; /* Espacio entre columnas */
+        border-left: 1px solid #ccc; /* Línea divisoria entre columnas */
+    }
+    </style>
+
+  <h1>Bienvenido!</h1>
+  {% if user.is_authenticated %}
+    Hola {{ user.username }}
+
+    {% if user.is_company %}
+      <h2>Datos de la Empresa</h2>
+      <p>Nombre de la Empresa: {{ user.empresa.razon_social }}</p>
+      <p>Total de Trabajadores: {{ user.empresa.nro_trabajadores_empresa }}</p>
+    {% endif %}
+
+    <h2>Resultados de la Evaluación</h2>
+    {% if resultados %}
+    <table class="formulario-autoevaluacion">
+      <thead>
+        <tr>
+          <th>Protocolo</th>
+          <th>Porcentaje Cumplimiento</th>
+          <th>Items Cumplidos</th>
+          <th>Items No Cumplidos</th>
+          <th>Items No Aplicaron</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for resultado in resultados %}
+          <tr>
+            <td class="titulo-columna">{{ resultado.id_evaluacion.id_protocolo.nombre }}</td>
+            <td class="porcentaje-columna">{{ resultado.porcentaje_cumplimiento }}</td>
+            <td class="cumple-columna">{{ resultado.items_cumplidos }}</td>
+            <td class="porcentaje-columna">{{ resultado.items_no_cumplidos }}</td>
+            <td class="porcentaje-columna">{{ resultado.items_no_aplicaron }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No hay resultados disponibles.</p>
+    {% endif %}
+  {% else %}
+  <a href="{% url 'llenar_datos_empresa' %}" class="btn btn-success">Llenar Formulario de Empresa</a>
+  {% endif %}
+{% endblock %}
+
+
+
+
+
+

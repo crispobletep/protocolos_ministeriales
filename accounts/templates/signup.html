@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+<div class="background-image register-background">
+    <div class="register-container">
+        <h1>Registro</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                  <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                  </p>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-success">Registrarse</button>
+            </form>
+        </form>
+            <br>
+        <br>
+    <a href="{% url 'home' %}">Volver al Inicio</a>
+    </div>
+</div>
+</body>
+</html>

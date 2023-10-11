@@ -1,0 +1,33 @@
+<!-- seleccionar_protocolos.html -->
+
+{% extends 'base.html' %}  <!-- Extiende tu plantilla base si la tienes -->
+
+{% block content %}
+  <h2>Seleccionar Protocolos que le apliquen</h2>
+  <form method="post" action="{% url 'seleccionar_protocolo' %}">
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Protocolo</th>
+                <th>Nombre del Protocolo</th>
+                <th>Descripción</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for protocolo in protocolos %}
+                <tr>
+                    <td>{{ protocolo.id_protocolo }}</td> <!-- Agrega esta columna para mostrar el ID del protocolo -->
+                    <td>{{ protocolo.nombre }}</td>
+                    <td>{{ protocolo.descripcion }}</td>
+                    <td>
+                        <input type="checkbox" name="protocolos[]" value="{{ protocolo.id_protocolo }}">
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Guardar Protocolos</button>
+  </form>
+{% endblock %}

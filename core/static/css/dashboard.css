@@ -1,0 +1,41 @@
+/* Estilos para los protocolos */
+.protocolos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.protocolo {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Estilos para los estados */
+.estado {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.completado {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.incompleto {
+    background-color: #FFC107; /* Amarillo */
+    color: white;
+}
+
+.en-progreso {
+    background-color: #F44336; /* Rojo */
+    color: white;
+}
+
+/* Estilos adicionales según tus necesidades */

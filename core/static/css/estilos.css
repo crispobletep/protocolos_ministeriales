@@ -1,0 +1,52 @@
+
+
+/* Mueve las opciones del navbar hacia el lado derecho */
+.navbar .navbar-nav {
+    margin-left: auto;
+}
+
+.login-background {
+    background-image: url('../img/wallpaper1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* Establece la altura de la imagen de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Apila elementos verticalmente */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 450px; /* Ajusta el ancho máximo según tus necesidades */
+}
+
+
+
+.register-background {
+    background-image: url('../img/wallpaper2.png'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.register-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 450px;
+}
+

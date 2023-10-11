@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Dashboard de {{ empresa.razon_social }}</h1>
+  <p>Total de Resultados de Evaluación: {{ total_resultados }}</p>
+  <p>Promedio de Cumplimiento: {{ promedio_cumplimiento|default:"N/A" }}</p>
+
+  <!-- Puedes mostrar otros datos aquí, como una lista de resultados de evaluación -->
+
+  <a href="{% url 'profile' %}" class="btn btn-primary">Volver al Inicio</a>
+{% endblock %}
