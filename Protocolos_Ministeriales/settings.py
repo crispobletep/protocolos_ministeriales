@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Protocolos_Ministeriales.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'basedatos_protocolos_sh',
+        'NAME': 'safeheal_basedatos_protocolos_sh',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
