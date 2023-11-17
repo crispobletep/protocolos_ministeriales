@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
     'core',
+    'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -78,12 +79,13 @@ WSGI_APPLICATION = 'Protocolos_Ministeriales.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'safeheal_basedatos_protocolos_sh',
+        'NAME': 'safeheal_basedatos_protocolos_sh4',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
+                    'charset': 'utf8mb4',
                     'sql_mode': 'traditional',
                 },
     }

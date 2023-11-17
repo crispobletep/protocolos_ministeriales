@@ -15,4 +15,11 @@ urlpatterns = [
     path('protocolos_seleccionados/', core_views.protocolos_seleccionados, name='protocolos_seleccionados'),
     path('eliminar_protocolo/<int:pk>/', core_views.eliminar_protocolo, name='eliminar_protocolo'),
     path('profile/', core_views.profile, name='profile'),
+    path('guardar_plan_de_accion/<int:id_item>/', core_views.guardar_plan_de_accion, name='guardar_plan_de_accion'),
+    path('obtener_plan_de_accion/<int:id_item>/', core_views.obtener_plan_de_accion, name='obtener_plan_de_accion'),
+    path('obtener_detalle_plan_de_accion/<int:plan_id>/', core_views.obtener_detalle_plan_de_accion,
+         name='obtener_detalle_plan_de_accion'),
+    path('actualizar_plan_de_accion/<int:plan_id>/', core_views.actualizar_plan_de_accion,
+         name='actualizar_plan_de_accion'),
+    path('eliminar_plan_de_accion/<int:plan_id>/', core_views.eliminar_plan_de_accion, name='eliminar_plan_de_accion'),
 ]

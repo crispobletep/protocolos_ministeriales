@@ -87,46 +87,52 @@
     }
     </style>
 
-  <h1>Bienvenido!</h1>
-  {% if user.is_authenticated %}
-    Hola {{ user.username }}
 
-    {% if user.is_company %}
-      <h2>Datos de la Empresa</h2>
-      <p>Nombre de la Empresa: {{ user.empresa.razon_social }}</p>
-      <p>Total de Trabajadores: {{ user.empresa.nro_trabajadores_empresa }}</p>
-    {% endif %}
+    <h1>Bienvenido!</h1>
+    {% if user.is_authenticated %}
+        Hola {{ user.username }}
 
-    <h2>Resultados de la Evaluación</h2>
-    {% if resultados %}
-    <table class="formulario-autoevaluacion">
-      <thead>
-        <tr>
-          <th>Protocolo</th>
-          <th>Porcentaje Cumplimiento</th>
-          <th>Items Cumplidos</th>
-          <th>Items No Cumplidos</th>
-          <th>Items No Aplicaron</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for resultado in resultados %}
-          <tr>
-            <td class="titulo-columna">{{ resultado.id_evaluacion.id_protocolo.nombre }}</td>
-            <td class="porcentaje-columna">{{ resultado.porcentaje_cumplimiento }}</td>
-            <td class="cumple-columna">{{ resultado.items_cumplidos }}</td>
-            <td class="porcentaje-columna">{{ resultado.items_no_cumplidos }}</td>
-            <td class="porcentaje-columna">{{ resultado.items_no_aplicaron }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        {% if user.is_company %}
+            <h2>Datos de la Empresa</h2>
+            {% if user.empresa %}
+                <p>Razón Social: {{ user.empresa.razon_social }}</p>
+                <p>Total de Trabajadores: {{ user.empresa.nro_trabajadores_empresa }}</p>
+                <!-- Otros atributos de la empresa -->
+            {% else %}
+                <p>No se encontraron datos de la empresa. Por favor, llena el formulario correspondiente.</p>
+            {% endif %}
+        {% endif %}
+
+        <h2>Resultados de la Evaluación</h2>
+        {% if resultados %}
+          <table class="formulario-autoevaluacion">
+            <thead>
+              <tr>
+                <th>Protocolo</th>
+                <th>Porcentaje Cumplimiento</th>
+                <th>Items Cumplidos</th>
+                <th>Items No Cumplidos</th>
+                <th>Items No Aplicaron</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for resultado in resultados %}
+                <tr>
+                  <td class="titulo-columna">{{ resultado.id_evaluacion.id_protocolo.nombre }}</td>
+                  <td class="porcentaje-columna">{{ resultado.porcentaje_cumplimiento }}</td>
+                  <td class="cumple-columna">{{ resultado.items_cumplidos }}</td>
+                  <td class="porcentaje-columna">{{ resultado.items_no_cumplidos }}</td>
+                  <td class="porcentaje-columna">{{ resultado.items_no_aplicaron }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No hay resultados disponibles.</p>
+        {% endif %}
     {% else %}
-    <p>No hay resultados disponibles.</p>
+        <p>No estás autenticado. <a href="{% url 'login' %}">Inicia sesión</a>.</p>
     {% endif %}
-  {% else %}
-  <a href="{% url 'llenar_datos_empresa' %}" class="btn btn-success">Llenar Formulario de Empresa</a>
-  {% endif %}
 {% endblock %}
 
 

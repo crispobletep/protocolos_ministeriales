@@ -5,6 +5,7 @@ body {
 
 .navbar {
   background-color: #5f9fd3; /* Color celeste */
+  margin-top: 0; /* Elimina el margen superior */
 }
 
 /* Resto de tus estilos CSS */

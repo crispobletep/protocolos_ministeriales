@@ -21,6 +21,20 @@ class EmpresaForm(forms.ModelForm):
 
 
 class OportunidadmejoraForm(forms.ModelForm):
+    id_item_seleccionado = forms.IntegerField(widget=forms.HiddenInput())  # Campo oculto para almacenar el id_item
+
     class Meta:
         model = Oportunidadmejora
-        fields = ['id_item', 'actividad', 'porcentajeavance', 'responsable', 'fechainicio', 'fechatermino']
+        fields = ['id_item_seleccionado', 'actividad', 'porcentajeavance', 'responsable', 'fechainicio', 'fechatermino']
+        widgets = {
+            'actividad': forms.TextInput(),
+            'porcentajeavance': forms.NumberInput(attrs={'min': '1', 'max': '100'}),
+            'fechainicio': forms.DateInput(attrs={'type': 'date'}),
+            'fechatermino': forms.DateInput(attrs={'type': 'date'}),
+        }
+
+    def clean_porcentajeavance(self):
+        porcentaje = self.cleaned_data['porcentajeavance']
+        if porcentaje < 1 or porcentaje > 100:
+            raise forms.ValidationError("El porcentaje debe estar entre 1 y 100.")
+        return porcentaje

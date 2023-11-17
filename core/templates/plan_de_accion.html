@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan de Acción</title>
+</head>
+<body>
+    <h2>Plan de Acción</h2>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Agrega aquí los campos del formulario para el plan de acción -->
+        <label for="actividad">Actividad:</label>
+        <input type="text" name="actividad" id="actividad">
+        <!-- Agrega más campos según tus necesidades -->
+        <button type="submit">Guardar Plan de Acción</button>
+    </form>
+</body>
+</html>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nuevo.css' %}">
     <title>Safe & Health SPA</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <style>
@@ -45,6 +46,16 @@
     #sidebar-logo img {
         margin-bottom: 10px;
     }
+
+    #new-sidebar-logo {
+        text-align: center;
+        margin-top: 20px; /* Ajusta el valor según tus necesidades */
+    }
+
+    #menu-title {
+        text-align: center; /* Alinea el título al centro */
+        margin-top: 10px; /* Ajusta el valor según tus necesidades */
+    }
     </style>
 </head>
 <body>
@@ -61,8 +72,10 @@
                         loading="lazy"
                     />
                 </a>
-                <ul class="navbar-nav ms-auto d-flex flex-row">
-                    <!-- Botón de Cerrar Sesión -->
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item">
+                        Sesion de: {{ user.username }}
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'signout' %}">
                             Cerrar Sesión
@@ -76,15 +89,18 @@
     <!-- Main Navigation -->
 
     <!-- Sidebar -->
-    <nav id="sidebar" class="collapse d-lg-block sidebar collapse bg-white" style="">
+    <nav id="sidebar" class="collapse d-lg-block sidebar collapse bg-white" style="padding-top: 0;">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <img
+                <div id="new-sidebar-logo" style="text-align: center; margin-top: 20px;">
+                    <img
                         src="{% static 'img/logo.jpg' %}"
                         alt="Logo Antucoya"
                         loading="lazy"
+                        height="100"
                     />
-                <h2>Menu Principal</h2>
+                </div>
+                <h3 id="menu-title" style="text-align: center;">Menu Principal</h3>
 
                 <a
                     href="{% url 'profile' %}"
@@ -93,6 +109,7 @@
                 >
                     <span class="menu-icon">&#9658;</span>Main Dashboard
                 </a>
+
                 <a href="{% url 'llenar_datos_empresa' %}" class="list-group-item list-group-item-action py-2 ripple">
                     <span class="menu-icon">&#9658;</span>Rellenar Formulario Empresa
                 </a>

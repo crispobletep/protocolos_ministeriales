@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Empresas Contratistas</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Contratista</th>
+            <th>Fecha Compromiso</th>
+            <th>Fecha Requisitos</th>
+            <!-- Agrega otras columnas según sea necesario -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for contratista in contratistas %}
+            <tr>
+                <td>{{ contratista.nombre }}</td>
+                <td>
+                    {% for evaluacion in evaluaciones_contratistas %}
+                        {% if evaluacion.id_empresa == contratista %}
+                            {{ evaluacion.fecha_compromiso }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for evaluacion in evaluaciones_contratistas %}
+                        {% if evaluacion.id_empresa == contratista %}
+                            {{ evaluacion.fecha_requisitos }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <!-- Agrega otras celdas según sea necesario -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Resultados de Evaluación</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Contratista</th>
+            <th>Porcentaje Cumplimiento</th>
+            <th>Items Cumplidos</th>
+            <th>Items No Cumplidos</th>
+            <th>Items No Aplicaron</th>
+            <!-- Agrega otras columnas según sea necesario -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for resultado in resultados_contratistas %}
+            <tr>
+                <td>{{ resultado.id_evaluacion.id_empresa.nombre }}</td>
+                <td>{{ resultado.porcentaje_cumplimiento }}</td>
+                <td>{{ resultado.items_cumplidos }}</td>
+                <td>{{ resultado.items_no_cumplidos }}</td>
+                <td>{{ resultado.items_no_aplicaron }}</td>
+                <!-- Agrega otras celdas según sea necesario -->
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+autoevaluacion.html
