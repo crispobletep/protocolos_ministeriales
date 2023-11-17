@@ -22,4 +22,5 @@ urlpatterns = [
     path('actualizar_plan_de_accion/<int:plan_id>/', core_views.actualizar_plan_de_accion,
          name='actualizar_plan_de_accion'),
     path('eliminar_plan_de_accion/<int:plan_id>/', core_views.eliminar_plan_de_accion, name='eliminar_plan_de_accion'),
+    path('vista_mandatario/', core_views.vista_mandatario, name='vista_mandatario'),
 ]
